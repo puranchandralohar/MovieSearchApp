@@ -90,3 +90,21 @@ body{
     border-radius: 10px;
     cursor: pointer;
   }
+
+  /* Show Details Elements */
+
+  .show-details{
+    margin-top:100px;
+  }
+
+  .contentBox{
+    margin:20px;
+    padding: 10px;
+    border:1px solid red;
+
+  }
+
+  .thumbnail img{
+    width: 600px;
+    height: 400px;
+  }
