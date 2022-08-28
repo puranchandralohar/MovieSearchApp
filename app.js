@@ -3,20 +3,16 @@
 let form = document.querySelector(".search");
 let searchbox = document.querySelector(".searchbox");
 
-
 form.addEventListener("submit", function (name) {
-  
   fetch(`https://api.tvmaze.com/search/shows?q=${searchbox.value}`)
     .then((responce) => responce.json())
     .then((data) => {
-
-      for(let i=0 ; i < data.length;i++){
-        
-          let shows =data[i]["show"];
-
-              let result = `<div class="content">
+      for (let i = 0; i < data.length; i++) {
+        let shows = data[i]["show"];
+        console.log(shows);
+        let result = `<div class="content">
               <div class="poster">
-                  <img src="${shows.image.medium}" alt="">
+                  <img src="${shows.image["original"]}" alt="${shows.name}">
               </div>
               <div class="show-title">
                   <h3>Name :${shows.name}</h3>
@@ -25,8 +21,11 @@ form.addEventListener("submit", function (name) {
                   <button class="btn">Show Details</button>
               </div>
               </div>`;
-              let main =document.querySelector(".main-content")
-              main.innerHTML += result;
+        let main = document.querySelector(".main-content");
+        main.innerHTML += result;
       }
-    }).catch((err)=>alert('Not Found Any Show'))
+
+      
+    })
+    // .catch(err => alert('Not Found Any Show'))
 });
